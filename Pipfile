@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+openmeteo-requests = "*"
+requests-cache = "*"
+retry-requests = "*"
+numpy = "*"
+pandas = "*"
+geopy = "*"
+pymupdf = "*"
+camelot-py = {extras = ["cv"], version = "*"}
+pypdf2 = "<3.0"
+opencage = "*"
+pytest = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
