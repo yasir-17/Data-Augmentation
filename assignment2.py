@@ -31,7 +31,8 @@ if __name__ == "__main__":
             incident_data = []
             for url in urls:
                 data = extract_data(url)
-                data = data[1:-1]
+                data = data[1:]
+                #print(data)
                 incident_data += data
                 all_data.append(incident_data)  # Collect the returned data
 

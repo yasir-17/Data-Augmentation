@@ -4,8 +4,6 @@ from datetime import datetime
 from src.location_weather import get_weather_code
 from src.location_weather import get_side_of_town
 
-
-
 # Create a sqlite database and a table
 def createdb(db_name, table_name, data):
     # create connection to the database and create a cursor
@@ -36,8 +34,9 @@ def createdb(db_name, table_name, data):
     cur.execute(create_table_query)
     
     # Initialize the geocoder
-
     
+    data = [row for row in data if len(row) > 1]
+ 
     # Count the frequency of locations and assign ranks based on the frequency
     location_counts = Counter(row[2] for row in data)
     location_ranks = {loc: rank for rank, locs in enumerate(sorted(location_counts.items(), key=lambda x: x[1], reverse=True), start=1) for loc in locs}
@@ -96,8 +95,8 @@ def createdb(db_name, table_name, data):
         insert_query = f"INSERT INTO {table_name} VALUES ({', '.join(['?' for _ in row])})"
         cur.execute(insert_query, row)
         #time.sleep(30)
-        if (i == 10) :
-            break
+        # if (i == 10) :
+        #     break
 
     print("Database created successfully")
 
